@@ -1,0 +1,23 @@
+<div style="    padding-top: 10%;
+padding-left: 40%;">
+<p>{{user | uppercase}} USER</p>
+<form [formGroup]="ip_addressForm" (ngSubmit)="save()">
+  <div formArrayName="ip_address">
+    <div *ngFor="let ip_addresses of ip_address.controls; let i=index" [formGroupName]="i">
+      <div style="padding-top:2%" >
+      <input *ngIf="ip_addresses.get('ip_address_value')" (keyup)="key_up()" formControlName="ip_address_value" pattern="{{pattern}}"  name="ip_address" placeholder="Enter ip address" />
+    &nbsp;&nbsp;
+    <img src="../../assets/substract.svg" alt="minus" style="width:10px;cursor: pointer" (click)="minusElement(i)"> &nbsp;&nbsp;
+    <img src="../../assets/add.svg" alt="plus" style="width:10px;cursor: pointer" (click)="addElement(i)"  *ngIf="i == ip_address.length-1">
+    &nbsp;&nbsp;
+    <mat-error style="display: inline;" *ngIf="!ip_addresses.get('ip_address_value').valid && ip_addresses.get('ip_address_value').touched" class="font">VALID IP ADDRESS REQUIRED</mat-error>
+  </div>  
+  </div>
+  </div>
+  <br>
+  <button type="submit" [disabled]="!ip_addressForm.valid" mat-raised-button  style="background-color:rgb(163, 228, 215)">Save</button>
+</form>
+</div>
+<br>
+<p *ngIf="display_saved" style="padding-left: 40%;color: blue">SAVED</p>
+<!-- {{ip_addressForm.value | json}} -->

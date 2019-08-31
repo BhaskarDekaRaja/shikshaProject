@@ -1,0 +1,13 @@
+<div style="padding-top:15%"> 
+  <div style="margin: auto;display: block;background-color: whitesmoke;width: 35%;padding: 5%">
+    <mat-form-field style="display:block;margin:auto;width: 30%;">
+      <mat-label>User</mat-label>
+      <mat-select #user>
+        <mat-option value="basic">Basic</mat-option>
+        <mat-option value="premium">Premium</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" style="margin:auto;display:block" (click)="navigate(user.value)">Submit</button>
+  </div>
+</div>
